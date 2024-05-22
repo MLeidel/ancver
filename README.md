@@ -108,7 +108,7 @@ Here is a portion of the page being tested:
 
 ```
 
-Now we'll run the program the display its output:  
+Now we'll run the program and display its output:  
 ```bash
 
 $> python3 ancver.py https://somesite.com/test print
@@ -142,7 +142,7 @@ If you run the program with the "open" option, then the "webbrowser" open functi
 will open each link in a separate tab in your default browser.
 
 The really useful part of Python is its many libraries.
-Both the BeautifulSoup and requests libraries are powerful tools for many
+Both BeautifulSoup and requests libraries are powerful tools for many
 types of applications. Get to know them well.
 
 

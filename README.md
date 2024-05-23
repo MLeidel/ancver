@@ -15,12 +15,7 @@ __Solution 2:__
 Use "Anchor Verifier" a small python program.  
 _Outcome:_ Works and is much faster than Solution 1.
 
-__Discussion:__  
-Solution 2 could actually be more work than Solution 1 if
-you do not have Python3 and its libraries installed on your computer.
-Fortunatly, that is described in many places on the Internet.
-
-Here is the program __ancver.py__:  
+__The Program__:  
 ```python
 '''
 anchor verify
@@ -118,28 +113,43 @@ for url in urls:
 print(f"\nFound {errs} errors.")
 
 ```
+__Discussion:__  
 
-This little program is valuable to learn for several reasons. 
+This little program has value for several reasons. 
 First, it will solve our problem discussed above, allowing us to rapidly 
 verify each anchor tag that we choose to review. Secondly, this program
 demonstrates how to use three very useful Python libraries related to 
 Internet access from your desktop.
 
 Some forethought is required in that when you create your anchor tags you will
-need to put in one more attribute into each anchor you will want to check with
+need to include one more attribute into each anchor you want to check with
 the anchor verifier program. We'll call this attribute "_scan_". So your anchor tag
-will look like this:  
+could look like this:  
+>
   `<a scan href="someurl.com">text</a>`
 
 The reason for this "scan" attribute is that there could be certain anchor tags you do not want
-to verify, and so without the "scan" attribute they will be bypassed.
+to verify, and so by leaving out the "scan" attribute they will be bypassed.
 
 >
 [[ _How could you alter the program to find all anchor tags?_ ]]
 
+When you run with the "__print__" option ancver will output request status codes
+with descriptions in the console. Many status codes other than 200 will occur because 
+of website security and the fact that our requests are not made from a browser! 
+So these are assumed to be OK and they'll be printed out with the code and message.
+Errors will appear in red for cases where there was no return code indicating a 
+definite problem with the URL.
+
+The "__try__" option is the same as the "print" option; however, URLs that do not return
+a status code will also be opened in a separate tab in your default browser.
+
+If you run the program with the "__open__" option, then each URL is opened in a 
+separate tab in your default browser. Nothing is reported in the terminal.
+
 __Running the program:__  
 
-ancver.py https://yourwebpage.xyz {print | open}
+python3 ancver.py https://yourwebpage.xyz {print | open}
 
 Here is a portion of the page being tested:  
 ```html
@@ -155,7 +165,7 @@ Here is a portion of the page being tested:
 
 ```
 
-Now we'll run the program and display its output:  
+__Here is the output:__ 
 ```bash
 
 $> python3 ancver.py https://somesite.com/test print
@@ -181,16 +191,12 @@ https://microsoft.com/news
 
 Found 1 errors.
 ```
-If the request succeeds but returns a number other than 200, then
-that error code is displayed with a message (not shown.)
-Also, note that the `<a href="my.pdf">My PDF file</a>` anchor was not
-tested.
-
-If you run the program with the "open" option, then the "webbrowser" open function
-will open each link in a separate tab in your default browser.
+Note that not every error (red message) is always an error (but most are.) 
+Therefore, it is always recomended to manually test the suspect URL in your
+browser before correcting or deleting it.
 
 The really useful part of Python is its many libraries.
-Both BeautifulSoup and requests libraries are powerful tools for many
+Both _BeautifulSoup_ and _requests_ libraries are powerful tools for many
 types of applications. Get to know them well.
 
 

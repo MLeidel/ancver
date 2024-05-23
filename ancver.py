@@ -2,8 +2,8 @@
 anchor verify
 USE: python3 anchor.py URL print|try|open|
 print : report request status to console
-try : report status to console and launch error URLs in browser
-open : launch all URLs in browser
+try   : report status to console and launch error URLs in browser
+open  : launch all URLs in browser
 
 Anchor tags must be marked with 'scan'. Example:
     <a scan href='https://somedomain.com'>Some Domain</a>

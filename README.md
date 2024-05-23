@@ -1,6 +1,8 @@
-## Web Anchor Verifier
-
-### Ahoy Raspberry Pythonistas
+# Web Anchor Verifier
+<!-- AUTORENDER -->
+> ![ship anchor](images/anchor.jpg "anchors verify") 
+ 
+## Ahoy Raspberry Pythonistas
 
 __Problem:__  
 I have a webpage with over 50 links to other websites.

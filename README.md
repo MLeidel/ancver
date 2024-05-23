@@ -191,12 +191,15 @@ https://microsoft.com/news
 
 Found 1 errors.
 ```
-Note that not every error (red message) is always an error (but most are.) 
+Not every error (red message) is always an error (but most are.) 
 Therefore, it is always recomended to manually test the suspect URL in your
 browser before correcting or deleting it.
 
-The really useful part of Python is its many libraries.
-Both _BeautifulSoup_ and _requests_ libraries are powerful tools for many
-types of applications. Get to know them well.
+__In Conclusion:__  
+If you can find a way to include a '_scan_' attribute into your anchor/href tags, then,
+with this program, you can save lots of time verifying the integrity of your website's links.
+
+Also, you may want to dig deeper into both _BeautifulSoup_ and the _requests_ libraries.
+They are powerful tools with many applications.
 
 

@@ -1,5 +1,6 @@
 '''
 anchor verify
+    a website management tool
 USE: python3 anchor.py URL print|try|open|
 print : report request status to console
 try   : report status to console and launch error URLs in browser
@@ -40,13 +41,12 @@ err = {
 
 errs = 0  # to count errors
 
-
 if len(sys.argv) != 3:
-    print("Missing args: URL print|open")
+    cprint("Missing args: {URL} {print|try|open}", "yellow")
     sys.exit(1)
 
 r = requests.get(sys.argv[1], timeout=(4,5))  # loads the page with the links to be tested
-print(r.status_code)
+print("starting page returned: ", r.status_code)
 data = r.text
 soup = BeautifulSoup(data, 'html.parser')
 
@@ -54,7 +54,7 @@ anchor_tags = soup.find_all('a', attrs={'scan': True})  # locate anchor tags wit
 
 urls = [tag['href'] for tag in anchor_tags if 'href' in tag.attrs]  # create list of URLs
 
-action = sys.argv[2].lower()  # print, try, or open
+action = sys.argv[2].lower()  # "print", "try", or "open"
 
 # Process the list of URLs
 for url in urls:
@@ -62,7 +62,7 @@ for url in urls:
         print("Too many errors!")
         sys.exit(1)
 
-    if url.startswith("http"):
+    if url.startswith("http"): # only looking at fully qualified URLs
         if action == "open":
             webbrowser.open(url)
         else:
@@ -71,12 +71,12 @@ for url in urls:
             try:
                 r = requests.head(url, timeout=(4,11))  # using 'head', faster than 'get'
             except requests.exceptions.Timeout:
-                cprint("Request Timed Out, try URL in browser", 'red', attrs=['bold',])
+                cprint("REQUEST TIMED OUT, try URL in browser", 'red', attrs=['bold',])
                 errs += 1
                 if action == "try":
                     webbrowser.open(url)
             except Exception as e:
-                cprint("request failed: invalid URL?, or try URL in browser.",
+                cprint("REQUEST FAILED: invalid URL?, or try URL in browser.",
                                                                            'red',
                                                                            attrs=['bold',])
                 errs += 1

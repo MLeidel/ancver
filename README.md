@@ -120,7 +120,7 @@ __Discussion:__
 This little program has value for several reasons. 
 First, it will solve our problem discussed above, allowing us to rapidly 
 verify each anchor tag that we choose to review. Secondly, this program
-demonstrates how to use three very useful Python libraries related to 
+demonstrates how to use several useful Python libraries related to 
 Internet access from your desktop.
 
 Some forethought is required in that when you create your anchor tags you will
@@ -128,7 +128,7 @@ need to include one more attribute into each anchor you want to check with
 the anchor verifier program. We'll call this attribute "_scan_". So your anchor tag
 could look like this:  
 >
-  `<a scan href="someurl.com">text</a>`
+  `<a scan href="https://somewebsite.com">text</a>`
 
 The reason for this "scan" attribute is that there could be certain anchor tags you do not want
 to verify, and so by leaving out the "scan" attribute they will be bypassed.
@@ -151,12 +151,12 @@ separate tab in your default browser. Nothing is reported in the terminal.
 
 __Running the program:__  
 
-python3 ancver.py https://yourwebpage.xyz {print | open}
+python3 ancver.py https://yourwebpage.xxx {print | try | open}
 
 Here is a portion of the page being tested:  
 ```html
 <body>
-<h1>Hello Anchors</h1>
+<h1>Ahoy Pythonistas!</h1>
 <a scan href="https://google.com">Google</a>
 <a scan href="https://faceboo.com">Facebook</a>
 <a scan href="https://amazon.com/customerx/">Amazon</a>
